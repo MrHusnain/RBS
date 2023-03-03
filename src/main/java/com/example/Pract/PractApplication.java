@@ -1,7 +1,8 @@
 package com.example.Pract;
 
-import com.example.Pract.Model.Customer;
-import com.example.Pract.Repository.CustomerRepository;
+import com.example.Pract.Entity.*;
+import com.example.Pract.Repository.*;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,21 +15,16 @@ public class PractApplication implements CommandLineRunner {
 		SpringApplication.run(PractApplication.class, args);
 	}
 @Autowired
-CustomerRepository customerRepository;
+
+
+	OrderDetailRepository OrderRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
-// first customer just for check
-		Customer custumer1=new Customer();
-		custumer1.setCustomer_Name("Ali Khan");
-		customerRepository.save(custumer1);
-// second customer
-		Customer customer2=new Customer();
-		customer2.setCustomer_Name("Afzaal ");
-		customerRepository.save(customer2);
-// third customer
-        Customer customer3=new Customer();
-		customer3.setCustomer_Name("Sir Ateeb");
-		customerRepository.save(customer3);
+		OrderDetail orderDetail =new OrderDetail();
+		orderDetail.setCustomerName("Contour Family");
+		OrderRepository.save(orderDetail);
+
 
 
 	}
