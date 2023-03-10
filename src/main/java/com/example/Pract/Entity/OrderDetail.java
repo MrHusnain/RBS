@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+//import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
 @Setter
@@ -16,8 +17,12 @@ public class OrderDetail {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long OrderId;
-@Column(name="customerName")
-    private String CustomerName;
+//@Column(name="customerName")
+//    private String CustomerName;
+//    @Embedded
+//    @Autowired
+//        @Column
+//    Customer customer;
 @Column
 private Double CustomerOrderItem;
 @Column
@@ -29,7 +34,7 @@ private Double order_Time;
     public String toString() {
         return "OrderDetail{" +
                 "OrderId=" + OrderId +
-                ", CustomerName='" + CustomerName + '\'' +
+
                 ", CustomerOrderItem=" + CustomerOrderItem +
                 ", CustomerTotalBill=" + CustomerTotalBill +
                 ", order_Time=" + order_Time +

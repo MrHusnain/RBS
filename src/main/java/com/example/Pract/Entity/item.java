@@ -6,18 +6,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
+//import java.util.List;
+
 @Entity @Getter@Setter @NoArgsConstructor @AllArgsConstructor
 public class item {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-   private double itemId;
+   private int itemId;
     @Column(name = "item_name")
     private String itemName;
     @Column (name = "item_price")
     private String itemPrice;
-//            @JoinColumn(name = "category_id")
-//     Category category;
+
+
+
+//@ManyToOne (cascade = CascadeType.ALL)
+//@JoinColumn (name ="Fk_id")
+//private Category category;
 
     @Override
     public String toString() {
@@ -25,6 +33,7 @@ public class item {
                 "itemId=" + itemId +
                 ", itemName='" + itemName + '\'' +
                 ", itemPrice='" + itemPrice + '\'' +
+
                 '}';
     }
 }
