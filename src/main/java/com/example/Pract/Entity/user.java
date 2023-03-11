@@ -1,14 +1,11 @@
 package com.example.Pract.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-//import org.springframework.beans.factory.annotation.Autowired;
+import lombok.*;
 
-@Entity @Getter @Setter @NoArgsConstructor
-@AllArgsConstructor
+//import org.springframework.beans.factory.annotation.Autowired;
+@Data
+@Entity
 public class user {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

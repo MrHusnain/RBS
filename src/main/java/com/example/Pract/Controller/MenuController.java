@@ -1,4 +1,4 @@
-package com.example.Pract.Controller;
-
-public class MenuController {
-}
+//package com.example.Pract.Controller;
+//
+//public class MenuController {
+//}

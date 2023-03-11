@@ -9,8 +9,8 @@ import lombok.Setter;
 import java.util.List;
 
 //import java.util.List;
-
-@Entity @Getter@Setter @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
+@Entity
 public class item {
     @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,17 +23,10 @@ public class item {
 
 
 
-//@ManyToOne (cascade = CascadeType.ALL)
-//@JoinColumn (name ="Fk_id")
-//private Category category;
+@ManyToOne (cascade = CascadeType.ALL)
+@JoinColumn (name ="category_id")
+private Category category;
 
-    @Override
-    public String toString() {
-        return "item{" +
-                "itemId=" + itemId +
-                ", itemName='" + itemName + '\'' +
-                ", itemPrice='" + itemPrice + '\'' +
 
-                '}';
-    }
+
 }

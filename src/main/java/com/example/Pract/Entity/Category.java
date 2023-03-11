@@ -1,4 +1,4 @@
-package com.example.Pract.Entity;
+ package com.example.Pract.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,20 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter @NoArgsConstructor @AllArgsConstructor
 @Entity
+@Table(name = "category")
 public class Category {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private double CategoryId;
-    @Column (name = "Category_name")
-    private String CategoryName;
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int categoryId;
+    @Column (name = "category_name")
+    private String categoryName;
 
 
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "CategoryId=" + CategoryId +
-                ", CategoryName='" + CategoryName + '\'' +
-                '}';
-    }
 }
