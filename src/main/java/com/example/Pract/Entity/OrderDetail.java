@@ -16,13 +16,14 @@ import lombok.Setter;
 @Table(name ="Order_Detail")
 public class OrderDetail {
     @Id
+    @Column(name = "order_id")
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long OrderId;
 
 
-    @OneToOne
-    @JoinColumn
-    CustomerSelectedOrder SelectedOrder;
+//    @OneToOne
+//    @JoinColumn
+//    CustomerSelectedOrder SelectedOrder;
 @Column
 private Double TotalBill;
 @Column

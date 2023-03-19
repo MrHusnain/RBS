@@ -1,4 +1,4 @@
-package com.example.Pract.Repository;
-
-public interface MenuRepository  {
-}
+//package com.example.Pract.Repository;
+//
+//public interface MenuRepository  {
+//}

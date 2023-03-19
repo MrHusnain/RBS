@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//
+
 @Entity
 @Getter
 @Setter
@@ -14,14 +14,15 @@ import lombok.Setter;
 public class Customer {
 
     @Id
+    @Column(name = "customer_id")
+
     @GeneratedValue(strategy =GenerationType.AUTO)
 private int CustomerId;
     @Column
 private String CustomerName;
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn
-public void CustomerOrder(){
-        CustomerSelectedOrder customerOrder;
+//    @OneToOne (cascade = CascadeType.ALL)
+//    @JoinColumn (name="customer_id")
+//public CustomerSelectedOrder customerOrder;
 
-}
+
 }

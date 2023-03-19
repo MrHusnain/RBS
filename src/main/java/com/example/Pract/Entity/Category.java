@@ -1,20 +1,19 @@
  package com.example.Pract.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-//import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-//
-//import java.util.List;
+import lombok.*;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
-@Getter
-@Setter @NoArgsConstructor @AllArgsConstructor
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "category")
 public class Category {
     @Id
+    @Column(name = "category_id")
  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoryId;
     @Column (name = "category_name")
