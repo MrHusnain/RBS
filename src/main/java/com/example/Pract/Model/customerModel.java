@@ -1,7 +1,10 @@
 package com.example.Pract.Model;
 
+import lombok.Data;
+
+@Data
 public class customerModel {
-    private int id;
-    private String customerName;
+    private int CustomerId;
+    private String CustomerName;
 
 }

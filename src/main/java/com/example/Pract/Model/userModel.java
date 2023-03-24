@@ -1,0 +1,13 @@
+package com.example.Pract.Model;
+
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
+public class userModel {
+    private long UserId;
+    private String UserType;
+    private String UserName;
+
+}

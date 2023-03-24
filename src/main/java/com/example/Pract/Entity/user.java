@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 //import org.springframework.beans.factory.annotation.Autowired;
-@Data
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity
 public class user {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long UserId;
     @Column (name = "user_type")
     private String UserType;

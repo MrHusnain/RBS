@@ -9,26 +9,32 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
+public List<categoryModel> getAllCategory(){
 
-    public Category insert(categoryModel categoryModel){
+return categoryRepository.findAll()
+        .stream()
+        .map(this::convertEntityToModel)
+        .collect(Collectors.toList());
+}
 
-        return categoryModel.assemble(categoryRepository.save(categoryModel.disassemble()));
-    }
+private categoryModel convertEntityToModel(Category category){
+    categoryModel categoryModel=new categoryModel();
+    categoryModel.setCategoryId(category.getCategoryId());
+    categoryModel.setCategoryName(category.getCategoryName());
+return categoryModel;
+}
+
 }
 
 
 
-//    Category();
-////        categoryEntity.setCategoryName(categoryModel);
-////        categoryEntity.setCategoryName(categoryModel.getCategory);
-//        categoryRepository.save(category);
 
-//}
 
 
