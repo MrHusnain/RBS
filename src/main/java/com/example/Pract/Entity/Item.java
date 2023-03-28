@@ -1,14 +1,11 @@
 package com.example.Pract.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 //import java.util.List;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
-@Entity
+@Entity @Builder
 public class Item {
     @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
