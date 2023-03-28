@@ -23,20 +23,9 @@ public class PractApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(PractApplication.class, args);
 	}
-	@Autowired
-	ItemRepository itemRepository;
-	@Autowired
-	CategoryRepository categoryRepository;
-@Autowired
-	UserRepositry userRepositry;
-
-
 	@Override
 	public void run(String... args) throws Exception {
-		user user=new user();
-		user.setUserName("Ali");
-		user.setUserType("Cashier");
-		userRepositry.save(user);
+
 
 	}
 }
