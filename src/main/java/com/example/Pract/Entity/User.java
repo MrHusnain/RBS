@@ -5,8 +5,8 @@ import lombok.*;
 
 //import org.springframework.beans.factory.annotation.Autowired;
 @Data @AllArgsConstructor @NoArgsConstructor
-@Entity
-public class user {
+@Entity @Builder
+public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
