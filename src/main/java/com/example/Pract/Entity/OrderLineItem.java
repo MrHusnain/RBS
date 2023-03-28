@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 public class OrderLineItem {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long skuCode;
     private BigDecimal price;
     private Integer qty;
 

@@ -13,12 +13,6 @@ public class Order {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long OrderId;
     private  String OrderNbr;
-    @Column
-    private Double TotalBill;
-    @Column
-    private Double order_Time;
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderLineItem> orderLineItems;
-
-
 }
