@@ -1,8 +1,7 @@
 package com.example.Pract.Services;
 
 import com.example.Pract.Entity.Customer;
-import com.example.Pract.Model.customerModel;
-import com.example.Pract.Repository.CategoryRepository;
+import com.example.Pract.Model.CustomerModel;
 import com.example.Pract.Repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +16,22 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 
-    public List<customerModel> GetAllCustomer() {
+    public List<CustomerModel> GetAllCustomer() {
         return customerRepository.findAll().
                 stream()
                 .map(this::customerList)
                 .collect(Collectors.toList());
     }
 
-    public void AddCustomer(customerModel customerModel){
+    public void AddCustomer(CustomerModel customerModel){
         Customer customer= Customer.builder()
                         .CustomerName(customerModel.getCustomerName())
                          .build();
         customerRepository.save(customer);
         log.info("customer {} Added",customer.getCustomerId());
 
-    } private customerModel customerList(Customer customer){
-        customerModel customerModel=new customerModel();
+    } private CustomerModel customerList(Customer customer){
+        CustomerModel customerModel=new CustomerModel();
         customerModel.setCustomerId(customer.getCustomerId());
         customerModel.setCustomerName(customer.getCustomerName());
         return customerModel;

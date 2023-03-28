@@ -1,7 +1,7 @@
 package com.example.Pract.Services;
 
 import com.example.Pract.Entity.Category;
-import com.example.Pract.Model.categoryModel;
+import com.example.Pract.Model.CategoryModel;
 import com.example.Pract.Repository.CategoryRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -17,14 +17,14 @@ import java.util.stream.Collectors;
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
-    public void CreateCategory(categoryModel categoryModel){
+    public void CreateCategory(CategoryModel categoryModel){
         Category category=Category.builder()
                 .categoryName(categoryModel.getCategoryName())
                 .build();
           categoryRepository.save(category);
           log.info("Category{} Saved",category.getCategoryId());
     }
-    public List<categoryModel> getAllCategory(){
+    public List<CategoryModel> getAllCategory(){
 
      return categoryRepository.findAll()
         .stream()
@@ -32,8 +32,8 @@ public class CategoryService {
         .collect(Collectors.toList());
 }
 
-private categoryModel convertEntityToModel(Category category){
-    categoryModel categoryModel=new categoryModel();
+private CategoryModel convertEntityToModel(Category category){
+    CategoryModel categoryModel=new CategoryModel();
     categoryModel.setCategoryId(category.getCategoryId());
     categoryModel.setCategoryName(category.getCategoryName());
 return categoryModel;
