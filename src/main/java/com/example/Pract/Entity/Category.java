@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity @Builder
 @Table(name = "category")
 public class Category {
     @Id
