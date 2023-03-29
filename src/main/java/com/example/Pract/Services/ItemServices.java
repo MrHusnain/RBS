@@ -44,6 +44,18 @@ public class ItemServices {
         itemModel.setItemPrice(item.getItemPrice());
         itemModel.setCategory(item.getCategory());
         return itemModel;
-
+    }
+    public Boolean searchItem(Integer itemId){
+        return itemRepository.existsById(itemId);
+    }
+    public String DeleteItem(Integer itemId){
+        String Result;
+        if (searchItem(itemId)){
+            itemRepository.deleteById(itemId);
+            Result="Deleted";
+        } else {
+            Result="not Exist";
+        }
+        return Result;
     }
 }

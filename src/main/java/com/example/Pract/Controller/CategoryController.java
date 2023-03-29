@@ -1,6 +1,7 @@
 package com.example.Pract.Controller;
 
 //import com.example.Pract.Services.CategoryService;
+import com.example.Pract.Entity.Category;
 import com.example.Pract.Model.CategoryModel;
 import com.example.Pract.Services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/category")
-public class CategoryController { @Autowired
+public class CategoryController {
+    @Autowired
  private CategoryService categoryService;
     @PostMapping public void CreateCategory(@RequestBody CategoryModel categoryModel){
         categoryService.CreateCategory(categoryModel);
@@ -20,4 +22,10 @@ public class CategoryController { @Autowired
     {
         return categoryService.getAllCategory();
     }
+    @DeleteMapping("/{categoryId}")
+    public String DeleteCategory(@PathVariable (name="categoryId")Integer categoryId){
+       return categoryService.DeleteCategory(categoryId);
+
+    }
+
 }

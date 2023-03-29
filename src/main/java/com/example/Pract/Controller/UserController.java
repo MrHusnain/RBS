@@ -20,5 +20,8 @@ public class UserController {
     public List<UserModel> getAllUser(){
         return userService.getAllUser();
     }
-
+    @DeleteMapping("/{UserId}")
+    public String DeleteUser(@PathVariable (name = "UserId") Long UserId){
+        return userService.DeleteUser(UserId);
+    }
 }

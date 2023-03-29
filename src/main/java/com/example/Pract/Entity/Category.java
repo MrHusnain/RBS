@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "category")
 public class Category {
     @Id
-    @Column(name = "category_id")
+    @Column(name = "categoryId")
  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoryId;
     @Column (name = "category_name")

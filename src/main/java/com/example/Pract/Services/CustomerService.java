@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-@Slf4j
+
+@Slf4j @Service
 public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
@@ -22,7 +22,6 @@ public class CustomerService {
                 .map(this::customerList)
                 .collect(Collectors.toList());
     }
-
     public void AddCustomer(CustomerModel customerModel){
         Customer customer= Customer.builder()
                         .CustomerName(customerModel.getCustomerName())
@@ -30,10 +29,28 @@ public class CustomerService {
         customerRepository.save(customer);
         log.info("customer {} Added",customer.getCustomerId());
 
-    } private CustomerModel customerList(Customer customer){
+    }
+    private CustomerModel customerList(Customer customer){
         CustomerModel customerModel=new CustomerModel();
         customerModel.setCustomerId(customer.getCustomerId());
         customerModel.setCustomerName(customer.getCustomerName());
         return customerModel;
     }
+    private boolean searchCustomer(Integer CustomerId) {
+        return customerRepository.existsById(CustomerId);
+    }
+    public String DeleteCustomer(Integer CustomerId){
+        String Result;
+        if (searchCustomer(CustomerId)){
+            customerRepository.deleteById(CustomerId);
+            Result="Deleted";
         }
+        else
+        {
+            Result="don't Exist";
+        }
+        return Result;
+    }
+
+
+}

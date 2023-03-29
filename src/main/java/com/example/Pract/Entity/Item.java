@@ -15,13 +15,7 @@ public class Item {
     private String itemName;
     @Column (name = "item_price")
     private String itemPrice;
-
-
-
 @ManyToOne (cascade = CascadeType.ALL)
 @JoinColumn (name ="category_id")
 private Category category;
-
-
-
 }

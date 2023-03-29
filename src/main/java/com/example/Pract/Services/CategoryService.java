@@ -17,6 +17,10 @@ import java.util.stream.Collectors;
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
+    public Boolean searchCategory(Integer categoryId){
+        return categoryRepository.existsById(categoryId);
+    }
+    // dissemble
     public void CreateCategory(CategoryModel categoryModel){
         Category category=Category.builder()
                 .categoryName(categoryModel.getCategoryName())
@@ -24,8 +28,8 @@ public class CategoryService {
           categoryRepository.save(category);
           log.info("Category{} Saved",category.getCategoryId());
     }
+    //assembler
     public List<CategoryModel> getAllCategory(){
-
      return categoryRepository.findAll()
         .stream()
         .map(this::convertEntityToModel)
@@ -38,8 +42,18 @@ private CategoryModel convertEntityToModel(Category category){
     categoryModel.setCategoryName(category.getCategoryName());
 return categoryModel;
 }
-
+public String DeleteCategory(Integer CategoryId){
+        String Result;
+        if (searchCategory(CategoryId)){
+            categoryRepository.deleteById(CategoryId);
+            Result="Deleted";
+        } else {
+            Result="don't Exist";
+        }
+        return Result;
 }
+}
+
 
 
 

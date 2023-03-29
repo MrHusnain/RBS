@@ -34,4 +34,19 @@ public class UserService {
         userModel.setUserType(user.getUserType());
 return userModel;
     }
+    public boolean SearchUser(Long userId) {
+        return userRepositry.existsById(userId);
+    }
+
+    public String DeleteUser(Long userId) {
+        String Result;
+        if (SearchUser(userId)) {
+            userRepositry.deleteById(userId);
+            Result="Deleted";
+        }
+        else {
+            Result="Not exist";
+        }
+        return Result;
+        }
 }

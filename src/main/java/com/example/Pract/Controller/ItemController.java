@@ -24,8 +24,8 @@ public class ItemController {
     public List<ItemModel> getAllItem(){
         return itemServices.GetAllitemList();
     }
-
-
-
-
+    @DeleteMapping("/{itemId}")
+    public String DeleteItem(@PathVariable (name = "itemId") Integer itemId){
+     return itemServices.DeleteItem(itemId);
+    }
 }
