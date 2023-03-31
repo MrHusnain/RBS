@@ -37,8 +37,8 @@ public class OrderService {
         return orderLineItem;
     }
 @Transactional
-    public OrderModel getOrderById(String id) {
+    public OrderModel getOrderById(String orderId) {
     OrderModel orderModel=new OrderModel();
-    return orderModel.assemble(orderRepository.findOrderById(id));
+    return orderModel.assemble(orderRepository.findOrderByOrderId(orderId));
     }
 }

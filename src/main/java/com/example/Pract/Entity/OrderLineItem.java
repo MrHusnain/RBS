@@ -13,7 +13,7 @@ public class OrderLineItem {
     private long id;
     private BigDecimal tbill;
     private Integer qty;
-    @JoinColumn @ManyToOne
+    @JoinColumn(name = "order_id") @ManyToOne
     private Order order;
 
 }

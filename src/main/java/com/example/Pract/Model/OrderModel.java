@@ -12,15 +12,15 @@ import java.util.List;
 
 @Data @AllArgsConstructor @NoArgsConstructor @Builder @Component
 public class OrderModel {
-    private String OrderId;
-    private  String OrderNbr;
+    private String orderId;
+    private  String orderNbr;
 
     private List<OrderLineitemModel> orderLineitemModelList;
 
     public Order dissamble() {
         Order order=new Order();
-        order.setOrderId(this.OrderId);
-        order.setOrderNbr(this.OrderNbr);
+        order.setOrderId(this.orderId);
+        order.setOrderNbr(this.orderNbr);
         return order;
     }
     public OrderModel assemble(Order order){

@@ -22,8 +22,8 @@ public class OrderController {
         orderService.placeOrder(orderModel);
         return "Order Created Successfully";
     }
-    @GetMapping("/{id}")
-    private OrderModel getClientById(@PathVariable(name = "id")String orderId){
+    @GetMapping("/{orderId}")
+    private OrderModel getClientById(@PathVariable(name = "orderId")String orderId){
         return orderService.getOrderById(orderId);
     }
 //    public List<OrderLineitemModel>GetAllOrder(OrderLineItem orderLineItem){

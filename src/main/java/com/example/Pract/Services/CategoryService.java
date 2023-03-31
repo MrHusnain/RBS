@@ -28,12 +28,13 @@ public class CategoryService {
             Result="User Created";
         }
         return Result;
+    }
 //        Category category=Category.builder()
 //                .categoryName(categoryModel.getCategoryName())
 //                .build();
 //          categoryRepository.save(category);
 //          log.info("Category{} Saved",category.getCategoryId());
-    }
+
     //assembler
     public List<CategoryModel> getAllCategory(){
      return categoryRepository.findAll()
@@ -48,9 +49,9 @@ public class CategoryService {
     }
 private CategoryModel convertEntityToModel(Category category){
     CategoryModel categoryModel=new CategoryModel();
-    categoryModel.setCategoryId(category.getCategoryId());
-    categoryModel.setCategoryName(category.getCategoryName());
-return categoryModel;
+//    categoryModel.setCategoryId(category.getCategoryId());
+//    categoryModel.setCategoryName(category.getCategoryName());
+return categoryModel.assamble(category);
 }
 public String DeleteCategory(Integer CategoryId){
         String Result;
@@ -72,6 +73,7 @@ public String DeleteCategory(Integer CategoryId){
         else {
         result="Not found";
         }
+
         return result;
     }
     @Transactional

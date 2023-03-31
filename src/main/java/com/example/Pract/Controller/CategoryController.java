@@ -14,8 +14,8 @@ import java.util.List;
 public class CategoryController {
     @Autowired
  private CategoryService categoryService;
-    @PostMapping public void CreateCategory(@RequestBody CategoryModel categoryModel){
-        categoryService.CreateCategory(categoryModel);
+    @PostMapping public String CreateCategory(@RequestBody CategoryModel categoryModel){
+      return   categoryService.CreateCategory(categoryModel);
      }
     @PutMapping("/update")
     private String updateClient(@RequestBody CategoryModel categoryModel){

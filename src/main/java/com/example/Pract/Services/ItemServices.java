@@ -56,8 +56,8 @@ public class ItemServices {
 //        itemModel.setItemId(item.getItemId());
 //        itemModel.setItemPrice(item.getItemPrice());
 //        itemModel.setCategoryId(itemModel.assamble().getCategoryId());
-        itemModel.assamble(item);
-        return itemModel;
+       return itemModel.assamble(item);
+
     }
     public Boolean searchItem(Integer itemId){
         return itemRepository.existsById(itemId);

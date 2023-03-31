@@ -5,7 +5,7 @@ import lombok.*;
 
 //import java.util.List;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
-@Entity @Builder
+@Entity @Builder @Table(name = "item")
 public class Item {
     @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
