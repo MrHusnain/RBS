@@ -32,8 +32,13 @@ public class OrderService {
     }
     private OrderLineItem maptoDto(OrderLineitemModel orderLineitemModel){
         OrderLineItem orderLineItem=new OrderLineItem();
-        orderLineItem.setPrice(orderLineitemModel.getPrice());
+        orderLineItem.setTbill(orderLineitemModel.getBill());
         orderLineItem.setQty(orderLineitemModel.getQty());
         return orderLineItem;
+    }
+@Transactional
+    public OrderModel getOrderById(String id) {
+    OrderModel orderModel=new OrderModel();
+    return orderModel.assemble(orderRepository.findOrderById(id));
     }
 }

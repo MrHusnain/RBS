@@ -28,4 +28,8 @@ public class ItemController {
     public String DeleteItem(@PathVariable (name = "itemId") Integer itemId){
      return itemServices.DeleteItem(itemId);
     }
+    @PutMapping("/update")
+    private String updateClient(@RequestBody ItemModel itemModel){
+        return itemServices.updateItem(itemModel);
+    }
 }

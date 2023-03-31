@@ -15,13 +15,18 @@ import java.util.List;
 public class OrderController {
     @Autowired
     OrderService orderService;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String createOrder(@RequestBody OrderModel orderModel) {
         orderService.placeOrder(orderModel);
         return "Order Created Successfully";
     }
-    public List<OrderLineitemModel>GetAllOrder(OrderLineItem orderLineItem){
-        return null;
+    @GetMapping("/{id}")
+    private OrderModel getClientById(@PathVariable(name = "id")String orderId){
+        return orderService.getOrderById(orderId);
     }
+//    public List<OrderLineitemModel>GetAllOrder(OrderLineItem orderLineItem){
+//        return null;
+//    }
 }

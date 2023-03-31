@@ -1,5 +1,6 @@
 package com.example.Pract.Model;
 
+import com.example.Pract.Entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,5 +13,19 @@ public class UserModel {
     private long UserId;
     private String UserType;
     private String UserName;
+    public User dissamble(){
+        User user=new User();
+        user.setUserId(this.UserId);
+        user.setUserName(this.UserName);
+        user.setUserType(this.UserType);
+        return user;
+    }
+    public UserModel assamble(User user){
+        UserModel userModel=new UserModel();
+        userModel.setUserId(user.getUserId());
+        userModel.setUserType(user.getUserType());
+        userModel.setUserName(user.getUserName());
+    return userModel;
+    }
 
 }

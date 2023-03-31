@@ -24,4 +24,8 @@ public class UserController {
     public String DeleteUser(@PathVariable (name = "UserId") Long UserId){
         return userService.DeleteUser(UserId);
     }
+    @PutMapping("/update")
+    private String updateUser(@RequestBody UserModel userModel){
+        return userService.updateUser(userModel);
+    }
 }

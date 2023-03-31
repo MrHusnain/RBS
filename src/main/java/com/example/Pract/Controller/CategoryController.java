@@ -17,6 +17,16 @@ public class CategoryController {
     @PostMapping public void CreateCategory(@RequestBody CategoryModel categoryModel){
         categoryService.CreateCategory(categoryModel);
      }
+    @PutMapping("/update")
+    private String updateClient(@RequestBody CategoryModel categoryModel){
+        return categoryService.updateClient(categoryModel);
+    }
+    //find by id
+    @GetMapping("/{id}")
+    private CategoryModel getClientById(@PathVariable(name = "id")Integer categoryId){
+        return categoryService.getCategory(categoryId);
+    }
+    // get all categories
     @GetMapping
     public List<CategoryModel> getAllCategory()
     {

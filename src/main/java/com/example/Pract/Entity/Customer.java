@@ -11,9 +11,11 @@ public class Customer {
     private int customerId;
      @Column
       private String CustomerName;
-//    @OneToOne (cascade = CascadeType.ALL)
-//    @JoinColumn (name="customer_id")
-//public CustomerSelectedOrder customerOrder;
+    @OneToOne
+    @JoinColumn (name="customer_id")
+    public Order order;
+    @JoinColumn @OneToOne
+    public OrderLineItem orderLineItem;
 
 
 }

@@ -3,6 +3,7 @@ package com.example.Pract.Services;
 import com.example.Pract.Entity.User;
 import com.example.Pract.Model.UserModel;
 import com.example.Pract.Repository.UserRepositry;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +15,21 @@ import java.util.stream.Collectors;
 public class UserService {
     @Autowired
     UserRepositry userRepositry;
-    public void addUser(UserModel userModel){
-        User user= User.builder().UserName(userModel.getUserName())
-                .UserType(userModel.getUserType())
-                .build();
-        userRepositry.save(user);
-        log.info("user {} saved",user.getUserId());
+    public String addUser(UserModel userModel){
+        String result;
+        if (SearchUser(userModel.dissamble().getUserId())){
+            result="user already exist";
+        }else {
+            upsert(userModel);
+            result="user created";
+        }
+        log.info("user {} saved",userModel.dissamble().getUserId());
+        return result;
+//        User user= User.builder().UserName(userModel.getUserName())
+//                .UserType(userModel.getUserType())
+//                .build();
+//        userRepositry.save(user);
+
 
     }
     public List<UserModel> getAllUser(){
@@ -29,9 +39,10 @@ public class UserService {
     }
     public UserModel EntityToModel(User user){
         UserModel userModel=new UserModel();
-        userModel.setUserId(user.getUserId());
-        userModel.setUserName(user.getUserName());
-        userModel.setUserType(user.getUserType());
+        userModel.assamble(user);
+//        userModel.setUserId(user.getUserId());
+//        userModel.setUserName(user.getUserName());
+//        userModel.setUserType(user.getUserType());
 return userModel;
     }
     public boolean SearchUser(Long userId) {
@@ -48,5 +59,20 @@ return userModel;
             Result="Not exist";
         }
         return Result;
+        } @Transactional
+    public UserModel upsert(UserModel userModel){
+        return userModel.assamble(userRepositry.save(userModel.dissamble()));
+    }
+
+    public String updateUser(UserModel userModel) {
+        String result;
+        if (SearchUser(userModel.dissamble().getUserId())){
+            upsert(userModel);
+            result="Updated";
         }
+        else {
+            result="user not exist";
+        }
+        return result;
+    }
 }
