@@ -13,8 +13,8 @@ public class UserController {
     @Autowired
     UserService userService;
     @PostMapping
-    public void addUser(@RequestBody UserModel userModel){
-    userService.addUser(userModel);
+    public String addUser(@RequestBody UserModel userModel){
+    return userService.addUser(userModel);
     }
     @GetMapping
     public List<UserModel> getAllUser(){

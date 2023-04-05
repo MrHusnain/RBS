@@ -1,24 +1,23 @@
  package com.example.Pract.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity @Builder
+@Data @NoArgsConstructor
+@Entity
 @Table(name = "category")
 public class Category {
     @Id
     @Column(name = "categoryId")
  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int categoryId;
+    private int id;
     @Column (name = "category_name")
-    private String categoryName;
-    @OneToMany (mappedBy = "category")
-    private List<Item> items;
+    private String name;
+   @OneToMany (mappedBy = "category",cascade = CascadeType.ALL)
+  private List<Item> items;
 
 }

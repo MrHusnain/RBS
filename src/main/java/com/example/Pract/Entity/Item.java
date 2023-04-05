@@ -3,19 +3,21 @@ package com.example.Pract.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-//import java.util.List;
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor
-@Entity @Builder @Table(name = "item")
+import java.util.List;
+
+@Entity
+@Data @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "item")
 public class Item {
     @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-   private int itemId;
+   private int id;
     @Column(name = "item_name")
-    private String itemName;
+    private String name;
     @Column (name = "item_price")
-    private String itemPrice;
-@ManyToOne (cascade = CascadeType.ALL)
-@JoinColumn (name ="category_id")
-private Category category;
+    private String price;
+ @ManyToOne (fetch = FetchType.LAZY)
+ @JoinColumn (name = "category_id")
+  private Category category;
 }

@@ -1,14 +1,16 @@
 package com.example.Pract.Model;
 
 import com.example.Pract.Entity.User;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.stereotype.Component;
 
 @Data
-@Component @NoArgsConstructor @AllArgsConstructor @Builder
+@Component @NoArgsConstructor @AllArgsConstructor
 public class UserModel {
     private long UserId;
     private String UserType;

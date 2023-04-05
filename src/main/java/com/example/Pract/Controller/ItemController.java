@@ -16,9 +16,9 @@ public class ItemController {
     @Autowired
     private ItemServices itemServices;
 @PostMapping
-@ResponseStatus(HttpStatus.CREATED)
-    public void Createitem(@RequestBody ItemModel itemModel){
-    itemServices.CreateItem(itemModel);
+    public String Createitem(@RequestBody ItemModel itemModel){
+
+    return itemServices.CreateItem(itemModel);
 }
     @GetMapping
     public List<ItemModel> getAllItem(){

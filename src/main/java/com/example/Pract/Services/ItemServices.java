@@ -4,10 +4,6 @@ import com.example.Pract.Entity.Item;
 import com.example.Pract.Model.ItemModel;
 import com.example.Pract.Repository.ItemRepository;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,14 +16,18 @@ import java.util.stream.Collectors;
 public class ItemServices {
     @Autowired
     ItemRepository itemRepository;
+    public Boolean searchItem(Integer itemId){
+        return itemRepository.existsById(itemId);
+    }
+    @Transactional
     public String CreateItem(ItemModel itemModel){
         String result;
-        if (searchItem(itemModel.getItemId())){
+        if (searchItem(itemModel.dissamble().getId())){
             result="already exist";
         }
         else {
             upsert(itemModel);
-            result="Created";
+            result="Item Created";
         }
 
 //    Item item = Item.builder()
@@ -35,7 +35,7 @@ public class ItemServices {
 //            .itemPrice(itemModel.getItemPrice())
 //            .build();
 //    itemRepository.save(item);
-    log.info("Product {} is saved ",itemModel.getItemId());
+//    log.info("Product {} is saved ",itemModel.getId());
         return result;
                 }
     @Transactional
@@ -49,19 +49,12 @@ public class ItemServices {
                 .map(this::convertEntitytoModel)
                 .collect(Collectors.toList());
     }
-
+@Transactional
     private ItemModel convertEntitytoModel(Item item){
         ItemModel itemModel=new ItemModel();
-//        itemModel.setItemName(item.getItemName());
-//        itemModel.setItemId(item.getItemId());
-//        itemModel.setItemPrice(item.getItemPrice());
-//        itemModel.setCategoryId(itemModel.assamble().getCategoryId());
        return itemModel.assamble(item);
-
     }
-    public Boolean searchItem(Integer itemId){
-        return itemRepository.existsById(itemId);
-    }
+    @Transactional
     public String DeleteItem(Integer itemId){
         String Result;
         if (searchItem(itemId)){
@@ -72,10 +65,10 @@ public class ItemServices {
         }
         return Result;
     }
-
+@Transactional
     public String updateItem(ItemModel itemModel) {
         String result;
-        if (searchItem(itemModel.dissamble().getItemId())){
+        if (searchItem(itemModel.dissamble().getId())){
             upsert(itemModel);
             result="updated";
         }else {

@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class UserService {
     @Autowired
     UserRepositry userRepositry;
+
     public String addUser(UserModel userModel){
         String result;
         if (SearchUser(userModel.dissamble().getUserId())){
@@ -22,9 +23,11 @@ public class UserService {
         }else {
             upsert(userModel);
             result="user created";
+
         }
-        log.info("user {} saved",userModel.dissamble().getUserId());
+        log.info("user {} saved",userModel.getUserId());
         return result;
+
 //        User user= User.builder().UserName(userModel.getUserName())
 //                .UserType(userModel.getUserType())
 //                .build();
@@ -39,11 +42,11 @@ public class UserService {
     }
     public UserModel EntityToModel(User user){
         UserModel userModel=new UserModel();
-        userModel.assamble(user);
+//        userModel.assamble(user);
 //        userModel.setUserId(user.getUserId());
 //        userModel.setUserName(user.getUserName());
 //        userModel.setUserType(user.getUserType());
-return userModel;
+return userModel.assamble(user);
     }
     public boolean SearchUser(Long userId) {
         return userRepositry.existsById(userId);
@@ -59,10 +62,11 @@ return userModel;
             Result="Not exist";
         }
         return Result;
-        } @Transactional
-    public UserModel upsert(UserModel userModel){
-        return userModel.assamble(userRepositry.save(userModel.dissamble()));
-    }
+   }
+//        @Transactional
+//    public UserModel upsert(UserModel userModel){
+//        return userModel.assamble(userRepositry.save(userModel.dissamble()));
+//    }
 
     public String updateUser(UserModel userModel) {
         String result;
@@ -74,5 +78,9 @@ return userModel;
             result="user not exist";
         }
         return result;
+    }
+    @Transactional
+    public UserModel upsert(UserModel userModel){
+        return userModel.assamble(userRepositry.save(userModel.dissamble()));
     }
 }
