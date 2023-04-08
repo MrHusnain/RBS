@@ -7,7 +7,7 @@ import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import java.util.List;
 
-@Data @NoArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "category")
 public class Category {

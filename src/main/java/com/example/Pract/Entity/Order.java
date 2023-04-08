@@ -12,8 +12,10 @@ public class Order {
     @Id
     @Column(name = "order_id")
     @GeneratedValue (strategy = GenerationType.AUTO)
-    private String orderId;
+    private Long orderId;
     private  String OrderNbr;
     @OneToMany(mappedBy = "order")
     private List<OrderLineItem> orderLineItems;
+    @OneToOne (mappedBy = "order")
+    private Bill bill;
 }

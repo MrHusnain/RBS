@@ -11,10 +11,9 @@ public class Customer {
     private int customerId;
      @Column
       private String CustomerName;
-    @OneToOne
-    @JoinColumn (name="customer_id")
+    @OneToOne(mappedBy = "customer")
     public Order order;
-    @JoinColumn @OneToOne
+    @OneToOne (mappedBy = "customer")
     public OrderLineItem orderLineItem;
 
 
