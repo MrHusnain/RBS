@@ -6,9 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-
-@Component @Builder
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data @NoArgsConstructor
 public class CustomerModel {
     private int customerId;
     private String customerName;
@@ -26,8 +24,8 @@ public class CustomerModel {
         CustomerModel customerModel=new CustomerModel();
         customerModel.setCustomerId(customer.getCustomerId());
         customerModel.setCustomerName(customer.getCustomerName());
-        customerModel.setOrderId(orderId.assemble(customer.getOrder()));
-        customerModel.setOrderLineitemModel(orderLineitemModel.assamble(customer.getOrderLineItem()));
+        customerModel.setOrderId(new OrderModel().assemble(customer.getOrder()));
+        customerModel.setOrderLineitemModel(new OrderLineitemModel().assamble(customer.getOrderLineItem()));
         return customerModel;
     }
 }
