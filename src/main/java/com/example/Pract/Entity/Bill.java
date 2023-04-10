@@ -6,20 +6,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "t_bill")
+@Table(name = "bill")
 public class Bill {
-    @Column(name = "b_id")
+    @Column(name = "bill_id")
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column (name = "t_bill")
-    private int totalBill;
-
-    @OneToOne (cascade = CascadeType.ALL) @JoinColumn
+    @OneToOne (fetch = FetchType.LAZY) @JoinColumn (name = "order_id")
     private Order order;
-
-    @OneToOne (cascade = CascadeType.ALL) @JoinColumn (name="customer_id")
+    @OneToMany(fetch = FetchType.LAZY) @JoinColumn (name = "items")
+    private List <Item> items;
+    @OneToOne (fetch = FetchType.LAZY) @JoinColumn (name="customer_id")
     private Customer customer;
-    @ManyToOne (cascade = CascadeType.ALL) @JoinColumn (name = "user_id")
+    @ManyToOne (fetch = FetchType.LAZY) @JoinColumn (name = "user_id")
     private User user;
+    @Column (name = "total_bill")
+    private int totalBill;
 
 }

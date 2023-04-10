@@ -13,14 +13,13 @@ import java.util.stream.Collectors;
 public class BillService {
     @Autowired
     private BillRepository billRepository;
-
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
     private UserRepositry userRepositry;
     @Autowired
     private CustomerRepository customerRepository;
-    public BillModel upsert(BillModel billModel) {
+    public BillModel getBill(BillModel billModel) {
         Bill bill=billModel.disamble();
          Customer customer=customerRepository.findCustomerByCustomerId(bill.getCustomer().getCustomerId());
         Order order=orderRepository.findOrderByOrderId(bill.getOrder().getOrderId());
@@ -28,7 +27,7 @@ public class BillService {
         bill.setOrder(order);
         bill.setCustomer(customer);
         bill.setUser(user);
-        Bill savedBill=billRepository.save(bill);
+                Bill savedBill=billRepository.save(bill);
         return new BillModel().assamble(savedBill);
 
     }
@@ -58,7 +57,7 @@ public class BillService {
     public String updateBill(BillModel billModel) {
         String result;
         if (searchBill(billModel.disamble().getId())){
-            upsert(billModel);
+            getBill(billModel);
             result="updated";
         }else {
             result="not found";

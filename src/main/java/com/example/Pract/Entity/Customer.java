@@ -3,18 +3,18 @@ import jakarta.persistence.*;
 import lombok.*;
 @Entity
 @Data
-@NoArgsConstructor @AllArgsConstructor @Builder @Table(name = "customer")
+@NoArgsConstructor @AllArgsConstructor @Table(name = "customer")
 public class Customer {
     @Id
     @Column(name = "customer_id")
     @GeneratedValue(strategy =GenerationType.AUTO)
     private int customerId;
-     @Column
-      private String CustomerName;
+     @Column (name = "customer_name")
+      private String customerName;
+
     @OneToOne(mappedBy = "customer")
-    public Order order;
-    @OneToOne (mappedBy = "customer")
-    public OrderLineItem orderLineItem;
+   private Bill bill;
+
 
 
 }

@@ -1,6 +1,9 @@
 package com.example.Pract.Services;
 
+import com.example.Pract.Entity.Category;
+import com.example.Pract.Entity.Item;
 import com.example.Pract.Entity.User;
+import com.example.Pract.Model.ItemModel;
 import com.example.Pract.Model.UserModel;
 import com.example.Pract.Repository.UserRepositry;
 import jakarta.transaction.Transactional;
@@ -27,12 +30,6 @@ public class UserService {
         }
         log.info("user {} saved",userModel.getUserId());
         return result;
-
-//        User user= User.builder().UserName(userModel.getUserName())
-//                .UserType(userModel.getUserType())
-//                .build();
-//        userRepositry.save(user);
-
 
     }
     public List<UserModel> getAllUser(){
@@ -63,10 +60,6 @@ return userModel.assamble(user);
         }
         return Result;
    }
-//        @Transactional
-//    public UserModel upsert(UserModel userModel){
-//        return userModel.assamble(userRepositry.save(userModel.dissamble()));
-//    }
 
     public String updateUser(UserModel userModel) {
         String result;
@@ -81,6 +74,10 @@ return userModel.assamble(user);
     }
     @Transactional
     public UserModel upsert(UserModel userModel){
-        return userModel.assamble(userRepositry.save(userModel.dissamble()));
+        User user=userModel.dissamble();
+        User savedUser=userRepositry.save(user);
+        return new UserModel().assamble(savedUser);
     }
+
+
 }

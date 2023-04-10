@@ -1,9 +1,9 @@
 package com.example.Pract.Services;
 
+import com.example.Pract.Entity.Item;
 import com.example.Pract.Entity.Order;
 import com.example.Pract.Entity.OrderLineItem;
-import com.example.Pract.Model.OrderLineitemModel;
-import com.example.Pract.Model.OrderModel;
+import com.example.Pract.Model.*;
 import com.example.Pract.Repository.OrderRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -26,18 +26,37 @@ public class OrderService {
                 stream()
                 .map(this::maptoDto)
                 .collect(Collectors.toList());
+      List<OrderLineItem> orderLineItems;
       order.setOrderLineItems(orderlineitems);
       orderRepository.save(order);
       log.info("Order {} {} Created successfully",order.getOrderNbr(),order.getOrderId());
     }
     private OrderLineItem maptoDto(OrderLineitemModel orderLineitemModel){
+
         OrderLineItem orderLineItem=new OrderLineItem();
-        orderLineItem.setTbill(orderLineitemModel.getBill());
+        orderLineItem.setId(orderLineitemModel.getId());
+        orderLineItem.setPrice(orderLineitemModel.getPrice());
         orderLineItem.setQty(orderLineitemModel.getQty());
         return orderLineItem;
     }
+    public void PlaceOrder(orderRequest itemModel){
+        Order order=new Order();
+        order.setOrderNbr(UUID.randomUUID().toString());
+        List<Item> items= itemModel.getItemModelList().stream().map(itemModel1 -> MapDto(itemModel1)).toList();
+       order.setItems(items);
 
-@Transactional
+orderRepository.save(order);
+    }
+
+    private Item MapDto(ItemModel itemModel1) {
+        Item item= new Item();
+        item.setName(itemModel1.getName());
+        item.setPrice(itemModel1.getPrice());
+
+        return item;
+    }
+
+
     public OrderModel getOrderById(Long orderId) {
     OrderModel orderModel=new OrderModel();
     return orderModel.assemble(orderRepository.findOrderByOrderId(orderId));

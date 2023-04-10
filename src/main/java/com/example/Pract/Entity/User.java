@@ -5,9 +5,8 @@ import lombok.*;
 
 import java.util.List;
 
-//import org.springframework.beans.factory.annotation.Autowired;
 @Data @AllArgsConstructor @NoArgsConstructor
-@Entity @Builder
+@Entity @Builder @Table (name = "user")
 public class User {
     @Id
     @Column(name = "user_id")

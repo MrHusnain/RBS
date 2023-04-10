@@ -12,11 +12,11 @@ import java.util.List;
 
 @RestController @RequestMapping("api/bill")
 public class BillController {
-    @Autowired
+@Autowired
     BillService billService;
     @PostMapping
     public ResponseEntity<BillModel> insert(@RequestBody BillModel billModel){
-        BillModel billModel1=billService.upsert(billModel);
+        BillModel billModel1=billService.getBill(billModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(billModel1);
     }
     @GetMapping

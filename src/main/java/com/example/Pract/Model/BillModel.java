@@ -1,7 +1,7 @@
 package com.example.Pract.Model;
 
 import com.example.Pract.Entity.Bill;
-import com.example.Pract.Entity.Customer;
+//import com.example.Pract.Entity.Customer;
 import com.example.Pract.Entity.OrderLineItem;
 import com.example.Pract.Entity.User;
 import lombok.Data;
@@ -30,6 +30,7 @@ public class BillModel {
         bill.setId(id);
         bill.setCustomer(customerModel.dissamble());
         bill.setOrder(orderModel.dissamble());
+        bill.setUser(userModel.dissamble());
         return bill;
 
     }

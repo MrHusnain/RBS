@@ -1,12 +1,10 @@
 package com.example.Pract.Entity;
-
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
-//import org.springframework.beans.factory.annotation.Autowired;
 
-@Data @NoArgsConstructor @AllArgsConstructor @Entity @Builder
+
+@Data  @Entity @AllArgsConstructor @NoArgsConstructor
 @Table(name ="order_detail")
 public class Order {
     @Id
@@ -18,4 +16,11 @@ public class Order {
     private List<OrderLineItem> orderLineItems;
     @OneToOne (mappedBy = "order")
     private Bill bill;
+//    @ManyToOne (fetch = FetchType.LAZY)
+//    @JoinColumn (name = "category_id")
+//    private Item item;
+//    @OneToOne (fetch = FetchType.LAZY)@JoinColumn (name = "customer_id")
+//   private Customer customer;
+@OneToOne(fetch = FetchType.LAZY) @JoinColumn(name = "item_id")
+private List <Item> items;
 }

@@ -10,8 +10,9 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
     @PostMapping
-    public void addCustomer(@RequestBody CustomerModel customermodel ){
-        customerService.AddCustomer(customermodel);
+    public String addCustomer(@RequestBody CustomerModel customermodel ){
+       return customerService.AddCustomer(customermodel);
+
     }
     @GetMapping
     public List<CustomerModel> GetAllCustomers(){

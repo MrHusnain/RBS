@@ -2,6 +2,7 @@ package com.example.Pract.Services;
 
 import com.example.Pract.Entity.Category;
 import com.example.Pract.Entity.Item;
+import com.example.Pract.Model.CategoryModel;
 import com.example.Pract.Model.ItemModel;
 import com.example.Pract.Repository.CategoryRepository;
 import com.example.Pract.Repository.ItemRepository;
@@ -33,6 +34,10 @@ public class ItemServices {
                 .stream()
                 .map( item -> new ItemModel().assamble(item))
                 .collect(Collectors.toList());
+    }
+    public ItemModel getItem(Integer id){
+        ItemModel itemModel=new ItemModel();
+        return itemModel.assamble(itemRepository.findCategoryById(id));
     }
 
     public String DeleteItem(Integer itemId){

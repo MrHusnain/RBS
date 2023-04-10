@@ -1,6 +1,5 @@
 package com.example.Pract.Controller;
 
-import com.example.Pract.Entity.Item;
 import com.example.Pract.Model.ItemModel;
 //import com.example.Pract.Services.ItemServices;
 import com.example.Pract.Services.ItemServices;
@@ -22,6 +21,14 @@ public class ItemController {
    ItemModel insertItemModel=itemServices.upsert(itemModel);
 //    FlightScheduleModel insertedFlightScheduleModel = flightScheduleService.insert(flightScheduleModel);
     return ResponseEntity.status(HttpStatus.CREATED).body(insertItemModel);
+}
+//    @GetMapping("/{id}")
+//    private CategoryModel getClientById(@PathVariable(name = "id")Integer itemId){
+//        return itemServices.getItem(itemId);
+@GetMapping ("{id}")
+private ItemModel getItem(@PathVariable (name = "id") Integer itemId){
+    return  itemServices.getItem(itemId);
+
 }
     @GetMapping
     public List<ItemModel> getAllItem(){

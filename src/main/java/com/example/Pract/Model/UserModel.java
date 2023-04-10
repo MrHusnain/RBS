@@ -10,18 +10,21 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.stereotype.Component;
 
 @Data
-@Component @NoArgsConstructor @AllArgsConstructor
+@Component @NoArgsConstructor
 public class UserModel {
     private long UserId;
     private String UserType;
     private String UserName;
+
+
     public User dissamble(){
         User user=new User();
         user.setUserId(this.UserId);
         user.setUserName(this.UserName);
         user.setUserType(this.UserType);
-        return user;
-    }
+
+    return user;
+            }
     public UserModel assamble(User user){
         UserModel userModel=new UserModel();
         userModel.setUserId(user.getUserId());

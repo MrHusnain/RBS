@@ -19,4 +19,11 @@ public class Item {
  @ManyToOne (fetch = FetchType.LAZY)
  @JoinColumn (name = "category_id")
   private Category category;
+ @ManyToOne
+    private Bill bill;
+    @OneToOne (mappedBy = "item",cascade = CascadeType.ALL)
+    private Order order;
+// @ManyToOne (mappedBy = "items",cascade = CascadeType.ALL)
+//    @JoinColumn(name = "ordereline_item")
+//    private OrderLineItem orderLineItem;
 }
