@@ -2,7 +2,6 @@ package com.example.Pract.Services;
 
 import com.example.Pract.Entity.Category;
 import com.example.Pract.Entity.Item;
-import com.example.Pract.Model.CategoryModel;
 import com.example.Pract.Model.ItemModel;
 import com.example.Pract.Repository.CategoryRepository;
 import com.example.Pract.Repository.ItemRepository;
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ItemServices {
+public class ItemService {
     @Autowired
     private ItemRepository itemRepository;
     @Autowired
@@ -27,7 +26,6 @@ public class ItemServices {
         Item savedItem=itemRepository.save(item);
         return new ItemModel().assamble(savedItem);
     }
-
     public List<ItemModel> GetAllitemList(){
         List<Item> items=itemRepository.findAll();
         return items
@@ -37,9 +35,8 @@ public class ItemServices {
     }
     public ItemModel getItem(Integer id){
         ItemModel itemModel=new ItemModel();
-        return itemModel.assamble(itemRepository.findCategoryById(id));
+        return itemModel.assamble(itemRepository.findItemById(id));
     }
-
     public String DeleteItem(Integer itemId){
         String Result;
         if (searchItem(itemId)){

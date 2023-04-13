@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends JpaRepository <Customer,Integer> {
-    Customer findCustomerByCustomerId(Integer customerId);
+    public Customer findCustomerById(Integer id);
+    public Customer getCustomerByEmailAndName(String email,String name);
 }

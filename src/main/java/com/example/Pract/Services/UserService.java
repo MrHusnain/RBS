@@ -1,34 +1,28 @@
 package com.example.Pract.Services;
-
-import com.example.Pract.Entity.Category;
-import com.example.Pract.Entity.Item;
 import com.example.Pract.Entity.User;
-import com.example.Pract.Model.ItemModel;
 import com.example.Pract.Model.UserModel;
 import com.example.Pract.Repository.UserRepositry;
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
-@Slf4j
-@Service
+@Service @Slf4j
 public class UserService {
     @Autowired
     UserRepositry userRepositry;
-
     public String addUser(UserModel userModel){
         String result;
-        if (SearchUser(userModel.dissamble().getUserId())){
+        User user=CheckUser(userModel.dissamble().getUserName());
+        if (user!=null){
             result="user already exist";
-        }else {
+        }
+        else {
             upsert(userModel);
             result="user created";
-
         }
-        log.info("user {} saved",userModel.getUserId());
+//        log.info("user {} saved",userModel.getUserId());
         return result;
 
     }
@@ -47,6 +41,9 @@ return userModel.assamble(user);
     }
     public boolean SearchUser(Long userId) {
         return userRepositry.existsById(userId);
+    }
+    public User CheckUser(String userName) {
+        return userRepositry.findByUserName(userName);
     }
 
     public String DeleteUser(Long userId) {

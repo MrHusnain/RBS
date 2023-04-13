@@ -2,17 +2,17 @@ package com.example.Pract.Services;
 import com.example.Pract.Entity.Category;
 import com.example.Pract.Model.CategoryModel;
 import com.example.Pract.Repository.CategoryRepository;
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class CategoryService {
     @Autowired
-    private ItemServices itemServices;
+    private ItemService itemServices;
     @Autowired
     private CategoryRepository categoryRepository;
     public Boolean searchCategory(Integer categoryId){

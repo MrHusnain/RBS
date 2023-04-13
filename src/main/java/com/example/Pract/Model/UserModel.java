@@ -15,8 +15,6 @@ public class UserModel {
     private long UserId;
     private String UserType;
     private String UserName;
-
-
     public User dissamble(){
         User user=new User();
         user.setUserId(this.UserId);

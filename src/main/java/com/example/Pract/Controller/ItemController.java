@@ -2,7 +2,7 @@ package com.example.Pract.Controller;
 
 import com.example.Pract.Model.ItemModel;
 //import com.example.Pract.Services.ItemServices;
-import com.example.Pract.Services.ItemServices;
+import com.example.Pract.Services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("api/item")
 public class ItemController {
     @Autowired
-    private ItemServices itemServices;
+    private ItemService itemServices;
 @PostMapping
     public ResponseEntity<ItemModel> insert(@RequestBody ItemModel itemModel){
 //    return itemServices.CreateItem(itemModel);

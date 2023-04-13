@@ -18,8 +18,8 @@ public class User {
     private String userName;
     @Column(name = "user_password")
     private String userPassword;
-    @OneToMany (mappedBy = "user")
-    private List <Bill> bills;
+//    @OneToMany (mappedBy = "user")
+//    private List <Bill> bills;
 
 
     }

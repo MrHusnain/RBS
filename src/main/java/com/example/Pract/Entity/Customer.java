@@ -6,15 +6,12 @@ import lombok.*;
 @NoArgsConstructor @AllArgsConstructor @Table(name = "customer")
 public class Customer {
     @Id
-    @Column(name = "customer_id")
-    @GeneratedValue(strategy =GenerationType.AUTO)
-    private int customerId;
+    @Column @GeneratedValue(strategy =GenerationType.IDENTITY)
+    private int id;
      @Column (name = "customer_name")
-      private String customerName;
-
-    @OneToOne(mappedBy = "customer")
-   private Bill bill;
-
-
-
+      private String name;
+     @Column (name = "customer_email" )
+     private String email;
+    public Customer(String name, String email) {
+    }
 }

@@ -10,10 +10,9 @@ import lombok.NoArgsConstructor;
 public class ItemModel {
     private int id;
     private String name;
-    private String price;
+    private float price;
    private CategoryModel categoryModel;
-
-    public ItemModel(int id, String name, String price, CategoryModel categoryModel) {
+    public ItemModel(int id, String name, float price, CategoryModel categoryModel) {
         this.id = id;
         this.name = name;
         this.price = price;
