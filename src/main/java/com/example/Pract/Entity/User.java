@@ -3,8 +3,6 @@ package com.example.Pract.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity @Builder @Table (name = "user")
 public class User {
@@ -17,7 +15,7 @@ public class User {
     @Column(name = "user_name")
     private String userName;
     @Column(name = "user_password")
-    private String userPassword;
+    private String password;
 //    @OneToMany (mappedBy = "user")
 //    private List <Bill> bills;
 

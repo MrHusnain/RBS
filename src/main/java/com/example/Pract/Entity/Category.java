@@ -2,7 +2,7 @@
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
-
+//8587c53a-2ce7-48a4-8e31-31c1b4cdb588
 @Data @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "category")
